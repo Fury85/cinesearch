@@ -55,3 +55,4 @@ The OMDB API key is visible in frontend code. For public repos, rotate keys if e
 MIT — use freely for learning and portfolios.
 
 ## Live Demo
+[Live Preview](https://cine-search-movies-earcher.vercel.app/)
