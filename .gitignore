@@ -1,5 +1,5 @@
 # Optional: ignore local config if you rotate API keys
-js/config.js
+#js/config.js
 
 .DS_Store
 Thumbs.db
