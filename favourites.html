@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favourites — CineSearch</title>
+    <meta name="description" content="Your saved favourite movies on CineSearch." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="canonical" href="https://cinesearch.netlify.app/favourites.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container">
+
+            <div class="header__brand">
+                <a href="index.html" class="brand-link" aria-label="CineSearch homepage">
+                    <span class="brand-icon" aria-hidden="true">🎬</span>
+                    <span class="brand-name">Cine<strong>Search</strong></span>
+                </a>
+                <p class="brand-tagline">Discover films you'll love</p>
+            </div>
+
+            <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+                <ul class="nav__list" role="list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="index.html">Discover</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link nav__link--active" href="favourites.html" aria-current="page">
+                            Favourites
+                            <span class="nav__badge" id="js-fav-count" aria-label="0 saved favourites">0</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle" id="js-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
+                aria-label="Toggle navigation menu">
+                <span class="nav-toggle__bar" aria-hidden="true"></span>
+                <span class="nav-toggle__bar" aria-hidden="true"></span>
+                <span class="nav-toggle__bar" aria-hidden="true"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main id="main-content" class="site-main" role="main">
+        <div class="container">
+
+            <!-- Page heading -->
+            <section class="section section--hero" aria-labelledby="favs-heading">
+                <h1 class="hero__heading" id="favs-heading">
+                    Your Saved <em class="hero__heading--accent">Favourites</em>
+                </h1>
+                <p class="hero__subtext">Movies you've saved — stored in your browser and always here when you return.
+                </p>
+            </section>
+
+            <!-- Detail Panel — same as index -->
+            <section class="section section--detail" id="js-detail-panel" aria-labelledby="detail-heading"
+                aria-live="polite" hidden>
+                <h2 class="sr-only" id="detail-heading">Selected movie details</h2>
+                <article class="detail-card" id="js-detail-card" itemscope itemtype="https://schema.org/Movie">
+                    <figure class="detail-card__poster-wrap">
+                        <img class="detail-card__poster" id="js-detail-poster" src="" alt="" width="120" height="180"
+                            loading="lazy" referrerpolicy="no-referrer" itemprop="image" />
+                    </figure>
+                    <div class="detail-card__body">
+                        <h3 class="detail-card__title" id="js-detail-title" itemprop="name">—</h3>
+                        <dl class="detail-card__meta">
+                            <div class="detail-card__meta-row">
+                                <dt class="sr-only">Year</dt>
+                                <dd class="detail-card__year" id="js-detail-year" itemprop="dateCreated">—</dd>
+                                <dt class="sr-only">Duration</dt>
+                                <dd class="detail-card__runtime" id="js-detail-runtime">—</dd>
+                                <dt class="sr-only">Rating</dt>
+                                <dd class="detail-card__rating" id="js-detail-rating" itemprop="contentRating">—</dd>
+                            </div>
+                            <div class="detail-card__meta-row">
+                                <dt class="sr-only">Director</dt>
+                                <dd class="detail-card__director" id="js-detail-director">
+                                    Dir: <span itemprop="director" itemscope itemtype="https://schema.org/Person">
+                                        <span id="js-detail-director-name" itemprop="name">—</span>
+                                    </span>
+                                </dd>
+                            </div>
+                        </dl>
+                        <p class="detail-card__plot" id="js-detail-plot" itemprop="description">—</p>
+                        <ul class="detail-card__genres" id="js-detail-genres" aria-label="Genres" role="list"></ul>
+                        <div class="detail-card__actions">
+                            <button class="btn btn--primary" type="button" id="js-detail-fav-btn" data-imdb-id=""
+                                aria-label="Save to favourites" aria-pressed="false">
+                                <span aria-hidden="true">♡</span> Save to Favourites
+                            </button>
+                            <a class="btn btn--secondary" id="js-detail-imdb-link" href="#" target="_blank"
+                                rel="noopener noreferrer" aria-label="View on IMDb (opens in new tab)">
+                                View on IMDb ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Favourites Grid -->
+            <section class="section section--favourites" aria-labelledby="favourites-heading">
+                <h2 class="section__heading" id="favourites-heading">
+                    Saved Movies
+                    <span class="section__heading-badge" id="js-fav-count-2" aria-label="0 favourites">0</span>
+                </h2>
+
+                <div class="empty-state empty-state--favs" id="js-favs-empty" aria-live="polite">
+                    <p class="empty-state__text">No favourites yet — go to <a href="index.html"
+                            class="footer__link">Discover</a> and press ♡ on any movie.</p>
+                </div>
+
+                <ol class="movie-grid movie-grid--favs" id="js-favs-grid" aria-label="Saved favourite movies"
+                    aria-live="polite" role="list"></ol>
+
+                <div class="favs-actions" id="js-favs-actions" hidden>
+                    <button class="btn btn--danger" type="button" id="js-clear-favs-btn"
+                        aria-label="Clear all saved favourites">
+                        Clear All Favourites
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col footer__col--brand">
+                    <p class="footer__brand-name">🎬 CineSearch</p>
+                    <p class="footer__brand-desc">A movie discovery app built with vanilla JavaScript and the OMDB API.
+                    </p>
+                </div>
+                <nav class="footer__col footer__col--links" aria-label="Footer navigation">
+                    <h3 class="footer__col-heading">Quick Links</h3>
+                    <ul class="footer__links" role="list">
+                        <li><a class="footer__link" href="index.html">Discover</a></li>
+                        <li><a class="footer__link" href="favourites.html">Favourites</a></li>
+                        <li><a class="footer__link" href="about.html">About</a></li>
+                    </ul>
+                </nav>
+                <div class="footer__col footer__col--tech">
+                    <h3 class="footer__col-heading">Built With</h3>
+                    <ul class="footer__tech-list" role="list">
+                        <li>Vanilla JavaScript</li>
+                        <li>OMDB API</li>
+                        <li>HTML5 &amp; CSS3</li>
+                        <li>LocalStorage</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__credit">
+                    Built by <a class="footer__link" href="https://github.com/fury85" target="_blank"
+                        rel="noopener noreferrer">Fury</a>
+                    &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank"
+                        rel="noopener noreferrer">OMDB API</a>
+                </p>
+                <p class="footer__copy">
+                    <small>&copy; <time id="js-year" datetime="2026">2026</time> CineSearch. All rights
+                        reserved.</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/shared.js" defer></script>
+    <script src="js/favourites.js" defer></script>
+
+</body>
+
+</html>

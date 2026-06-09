@@ -1,0 +1,24 @@
+/*  Favourites section  */
+
+.section--favourites { padding-bottom: var(--sp-16); }
+
+.empty-state--favs {
+  background: var(--clr-bg-surface);
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-10);
+}
+
+.favs-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--sp-6);
+}
+
+.movie-grid--favs .movie-card {
+  border-color: var(--clr-gold-dim);
+}
+
+.movie-grid--favs .movie-card:hover {
+  border-color: rgba(232, 176, 74, 0.3);
+}

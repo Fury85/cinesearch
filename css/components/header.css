@@ -1,0 +1,142 @@
+/*  Header  */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  padding-block: var(--sp-4);
+}
+
+/* Brand */
+
+.header__brand {
+  flex-shrink: 0;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  transition: opacity var(--dur-fast);
+}
+.brand-link:hover {
+  opacity: 0.8;
+}
+
+.brand-icon {
+  font-size: 1.4rem;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--clr-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.brand-name strong {
+  color: var(--clr-accent);
+  font-weight: var(--fw-regular);
+}
+
+.brand-tagline {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* Nav */
+
+.site-nav {
+  display: flex;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-secondary);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--dur-fast),
+    background var(--dur-fast);
+}
+
+.nav__link:hover {
+  color: var(--clr-text-primary);
+  background: var(--clr-bg-elevated);
+}
+
+.nav__link--active {
+  color: var(--clr-text-primary);
+  background: var(--clr-bg-elevated);
+}
+
+.nav__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding-inline: var(--sp-1);
+  background: var(--clr-accent);
+  color: #fff;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--fw-semi);
+  line-height: 1;
+}
+
+/* Mobile nav toggle */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--sp-2);
+  border-radius: var(--radius-sm);
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--clr-text-primary);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}

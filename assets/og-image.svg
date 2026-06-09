@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <text x="600" y="280" text-anchor="middle" fill="#f0ede8" font-family="Georgia,serif" font-size="72">CineSearch</text>
+  <text x="600" y="360" text-anchor="middle" fill="#9a9690" font-family="system-ui,sans-serif" font-size="28">Discover &amp; save your favourite films</text>
+  <circle cx="600" cy="440" r="8" fill="#e05c2a"/>
+</svg>

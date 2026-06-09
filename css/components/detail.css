@@ -1,0 +1,114 @@
+/*  9. Detail panel  */
+
+.section--detail {
+  padding-block: var(--sp-8);
+}
+
+.detail-card {
+  display: flex;
+  gap: var(--sp-6);
+  background: var(--clr-bg-surface);
+  border: 1px solid var(--clr-border);
+  border-left: 3px solid var(--clr-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  animation: slideDown var(--dur-slow) var(--ease-out);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.detail-card__poster-wrap {
+  flex-shrink: 0;
+}
+
+.detail-card__poster {
+  width: 110px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--clr-bg-elevated);
+  border: 1px solid var(--clr-border);
+}
+
+.detail-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  margin-bottom: var(--sp-2);
+  letter-spacing: -0.01em;
+}
+
+.detail-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-4);
+}
+
+.detail-card__meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.detail-card__year,
+.detail-card__runtime,
+.detail-card__rating {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+}
+
+.detail-card__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  color: var(--clr-gold);
+  font-weight: var(--fw-medium);
+}
+
+.detail-card__director {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+}
+
+.detail-card__plot {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--sp-4);
+  max-width: 65ch;
+}
+
+.detail-card__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+
+.detail-card__genres li {
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--clr-bg-overlay);
+  color: var(--clr-text-secondary);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.detail-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}

@@ -1,0 +1,114 @@
+/* 7. HERO & SEARCH */
+.section--hero {
+  padding-top: var(--sp-16);
+  padding-bottom: var(--sp-10);
+  text-align: center;
+}
+
+.hero__heading {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-2xl), 6vw, var(--fs-3xl));
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-4);
+}
+
+.hero__heading--accent {
+  font-style: italic;
+  color: var(--clr-accent);
+}
+
+.hero__subtext {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: var(--sp-8);
+  line-height: var(--lh-loose);
+}
+
+/* Search Form */
+.search-form {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.search-form__label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-secondary);
+  margin-bottom: var(--sp-2);
+  text-align: left;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.search-form__group {
+  display: flex;
+  align-items: center;
+  background: var(--clr-bg-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    border-color var(--dur-base),
+    box-shadow var(--dur-base);
+}
+.search-form__group:focus-within {
+  border-color: var(--clr-border-accent);
+  box-shadow: 0 0 0 3px var(--clr-accent-glow);
+}
+
+.search-form__icon {
+  display: flex;
+  align-items: center;
+  padding-left: var(--sp-4);
+  color: var(--clr-text-muted);
+  flex-shrink: 0;
+}
+
+.search-form__input {
+  flex: 1;
+  padding: var(--sp-4) var(--sp-4);
+  background: transparent;
+  border: none;
+  color: var(--clr-text-primary);
+  font-size: var(--fs-base);
+  outline: none;
+}
+.search-form__input::placeholder {
+  color: var(--clr-text-muted);
+}
+
+/* Clear the native 'x' button in webkit */
+.search-form__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search-form__btn {
+  flex-shrink: 0;
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--clr-accent);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.03em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  transition: background var(--dur-fast);
+  white-space: nowrap;
+}
+.search-form__btn:hover {
+  background: var(--clr-accent-hover);
+}
+.search-form__btn:active {
+  transform: scale(0.98);
+}
+
+.search-form__hint {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-2);
+  text-align: left;
+}

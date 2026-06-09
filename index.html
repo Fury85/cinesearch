@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ===================== META & SEO ===================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta Tags -->
+  <title>CineSearch — Discover & Save Your Favourite Movies</title>
+  <meta name="title" content="CineSearch — Discover & Save Your Favourite Movies" />
+  <meta name="description" content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites — all in one place." />
+  <meta name="keywords" content="movie search, film discovery, movie ratings, favourites, genre filter, cinema" />
+  <meta name="author" content="Fury" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cinesearch.netlify.app/" />
+  <meta property="og:title" content="CineSearch — Discover & Save Your Favourite Movies" />
+  <meta property="og:description" content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites." />
+  <meta property="og:image" content="assets/og-image.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CineSearch — Discover & Save Your Favourite Movies" />
+  <meta name="twitter:description" content="Search thousands of movies, filter by genre, view ratings and save your favourites." />
+  <meta name="twitter:image" content="assets/og-image.svg" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cinesearch.netlify.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.omdbapi.com" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Schema.org Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CineSearch",
+    "url": "https://cinesearch.netlify.app/",
+    "description": "Search, discover and save your favourite movies.",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Web"
+  }
+  </script>
+</head>
+
+<body>
+
+  <!--Skip link-->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+
+      <!-- Logo -->
+      <div class="header__brand">
+        <a href="index.html" class="brand-link" aria-label="CineSearch homepage">
+          <span class="brand-icon" aria-hidden="true">🎬</span>
+          <span class="brand-name">Cine<strong>Search</strong></span>
+        </a>
+        <p class="brand-tagline">Discover films you'll love</p>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <ul class="nav__list" role="list">
+          <li class="nav__item">
+            <a class="nav__link nav__link--active" href="index.html" aria-current="page">Discover</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="favourites.html">
+              Favourites
+              <span class="nav__badge" id="js-fav-count" aria-label="0 saved favourites">0</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="about.html">About</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile menu toggle -->
+      <button
+        class="nav-toggle"
+        id="js-nav-toggle"
+        type="button"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!--Main-->
+  <main id="main-content" class="site-main" role="main">
+    <div class="container">
+
+      <div class="config-banner" id="js-config-banner" role="alert" hidden>
+        Add your OMDB API key in <a href="https://www.omdbapi.com/apikey.aspx" target="_blank" rel="noopener noreferrer">js/config.js</a> (copy from <code>js/config.example.js</code>) to enable search.
+      </div>
+
+      <!-- Hero and search section -->
+      <section class="section section--hero" aria-labelledby="hero-heading">
+        <h1 class="hero__heading" id="hero-heading">
+          Find Your Next<br />
+          <em class="hero__heading--accent">Favourite Film</em>
+        </h1>
+        <p class="hero__subtext">Search from thousands of titles — get ratings, plot details, and save the ones you love.</p>
+
+        <!-- Search Form -->
+        <form
+          class="search-form"
+          id="js-search-form"
+          role="search"
+          action="#"
+          method="get"
+          aria-label="Movie search form"
+          novalidate
+        >
+          <label class="search-form__label" for="js-search-input">Search movies</label>
+
+          <div class="search-form__group">
+            <span class="search-form__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+            </span>
+
+            <input
+              class="search-form__input"
+              type="search"
+              id="js-search-input"
+              name="q"
+              placeholder="e.g. Inception, Christopher Nolan..."
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              maxlength="100"
+              aria-label="Search for a movie"
+              aria-describedby="search-hint"
+              aria-autocomplete="list"
+              aria-controls="js-results-grid"
+              required
+            />
+
+            <button
+              class="search-form__btn"
+              type="submit"
+              id="js-search-btn"
+              aria-label="Submit search"
+            >
+              Search
+            </button>
+          </div>
+
+          <p class="search-form__hint" id="search-hint" aria-live="polite">
+            Press Enter or click Search to find movies
+          </p>
+        </form>
+      </section>
+
+      <!-- ---- Filter section ---- -->
+      <section class="section section--filters" aria-labelledby="filter-heading">
+        <h2 class="sr-only" id="filter-heading">Refine by genre keyword</h2>
+
+        <div class="filters" role="group" aria-label="Refine search by genre keyword">
+
+          <button
+            class="filter-btn filter-btn--active"
+            type="button"
+            data-genre="all"
+            aria-pressed="true"
+            aria-label="Show all genres"
+          >All</button>
+
+          <button class="filter-btn" type="button" data-genre="action"   aria-pressed="false">Action</button>
+          <button class="filter-btn" type="button" data-genre="drama"    aria-pressed="false">Drama</button>
+          <button class="filter-btn" type="button" data-genre="sci-fi"   aria-pressed="false">Sci-Fi</button>
+          <button class="filter-btn" type="button" data-genre="comedy"   aria-pressed="false">Comedy</button>
+          <button class="filter-btn" type="button" data-genre="horror"   aria-pressed="false">Horror</button>
+          <button class="filter-btn" type="button" data-genre="thriller" aria-pressed="false">Thriller</button>
+          <button class="filter-btn" type="button" data-genre="romance"  aria-pressed="false">Romance</button>
+          <button class="filter-btn" type="button" data-genre="animation" aria-pressed="false">Animation</button>
+
+        </div>
+        <p class="filters__hint" id="filter-hint">
+          Genre chips refine your search (e.g. “batman” + Action). OMDB matches titles and keywords, not strict genres.
+        </p>
+      </section>
+
+      <!------ Selected movie panel ------>
+      <section
+        class="section section--detail"
+        id="js-detail-panel"
+        aria-labelledby="detail-heading"
+        aria-live="polite"
+        hidden
+      >
+        <h2 class="sr-only" id="detail-heading">Selected movie details</h2>
+
+        <article class="detail-card" id="js-detail-card" itemscope itemtype="https://schema.org/Movie">
+
+          <!-- Poster -->
+          <figure class="detail-card__poster-wrap">
+            <img
+              class="detail-card__poster"
+              id="js-detail-poster"
+              src=""
+              alt=""
+              width="120"
+              height="180"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              itemprop="image"
+            />
+          </figure>
+
+          <!-- Info -->
+          <div class="detail-card__body">
+            <h3 class="detail-card__title" id="js-detail-title" itemprop="name">—</h3>
+
+            <dl class="detail-card__meta">
+              <div class="detail-card__meta-row">
+                <dt class="sr-only">Year</dt>
+                <dd class="detail-card__year" id="js-detail-year" itemprop="dateCreated">—</dd>
+
+                <dt class="sr-only">Duration</dt>
+                <dd class="detail-card__runtime" id="js-detail-runtime">—</dd>
+
+                <dt class="sr-only">Rating</dt>
+                <dd class="detail-card__rating" id="js-detail-rating" itemprop="contentRating">—</dd>
+              </div>
+
+              <div class="detail-card__meta-row">
+                <dt class="sr-only">Director</dt>
+                <dd class="detail-card__director" id="js-detail-director">
+                  Dir: <span itemprop="director" itemscope itemtype="https://schema.org/Person">
+                    <span id="js-detail-director-name" itemprop="name">—</span>
+                  </span>
+                </dd>
+              </div>
+            </dl>
+
+            <p class="detail-card__plot" id="js-detail-plot" itemprop="description">—</p>
+
+            <!-- Genre tags -->
+            <ul class="detail-card__genres" id="js-detail-genres" aria-label="Genres" role="list"></ul>
+
+            <!-- Actions -->
+            <div class="detail-card__actions">
+              <button
+                class="btn btn--primary"
+                type="button"
+                id="js-detail-fav-btn"
+                data-imdb-id=""
+                aria-label="Save to favourites"
+                aria-pressed="false"
+              >
+                <span aria-hidden="true">♡</span> Save to Favourites
+              </button>
+
+              <a
+                class="btn btn--secondary"
+                id="js-detail-imdb-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View on IMDb (opens in new tab)"
+              >
+                View on IMDb ↗
+              </a>
+            </div>
+          </div>
+
+        </article>
+      </section>
+
+      <!-- ---- Results action ---- -->
+      <section class="section section--results" aria-labelledby="results-heading">
+
+        <div class="results-header">
+          <h2 class="results-header__title" id="results-heading">
+            <span id="js-results-label">Popular picks</span>
+            <span class="results-header__count" id="js-results-count" aria-live="polite" aria-atomic="true"></span>
+          </h2>
+
+          <!-- Sort control -->
+          <div class="results-header__sort">
+            <label class="sr-only" for="js-sort-select">Sort results by</label>
+            <select class="sort-select" id="js-sort-select" aria-describedby="sort-hint">
+              <option value="relevance">Relevance (this page)</option>
+              <option value="title-asc">Title: A–Z (this page)</option>
+              <option value="year-desc">Year: newest (this page)</option>
+              <option value="year-asc">Year: oldest (this page)</option>
+            </select>
+            <span class="sr-only" id="sort-hint">Sorting applies to the current page of results only.</span>
+          </div>
+        </div>
+
+        <!-- Loading state -->
+        <div class="loading-state" id="js-loading" aria-live="polite" aria-label="Loading movies" hidden>
+          <div class="loading-state__spinner" aria-hidden="true"></div>
+          <p class="loading-state__text">Searching movies...</p>
+        </div>
+
+        <!-- Error state -->
+        <div class="error-state" id="js-error" role="alert" aria-live="assertive" hidden>
+          <p class="error-state__message" id="js-error-msg">Something went wrong. Please try again.</p>
+          <button class="btn btn--secondary" type="button" id="js-retry-btn">Try Again</button>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="js-empty" aria-live="polite" hidden>
+          <p class="empty-state__text">No movies found. Try a different search term.</p>
+        </div>
+
+        <!-- Movie Grid -->
+        <ol
+          class="movie-grid"
+          id="js-results-grid"
+          aria-label="Movie search results"
+          aria-live="polite"
+          aria-atomic="false"
+          role="list"
+        >
+        </ol>
+
+        <!-- Pagination -->
+        <nav class="pagination" id="js-pagination" aria-label="Results pagination" hidden>
+          <button class="pagination__btn" type="button" id="js-prev-btn" aria-label="Go to previous page" disabled>
+            ← Prev
+          </button>
+          <span class="pagination__info" id="js-page-info" aria-live="polite">Page 1</span>
+          <button class="pagination__btn" type="button" id="js-next-btn" aria-label="Go to next page">
+            Next →
+          </button>
+        </nav>
+
+      </section>
+
+      <!------ Favourites section ------>
+      <section class="section section--favourites" aria-labelledby="favourites-heading">
+        <h2 class="section__heading" id="favourites-heading">
+          Saved Favourites
+          <span class="section__heading-badge" id="js-fav-count-2" aria-label="0 favourites">0</span>
+        </h2>
+        <p class="section__subtext">Your saved movies — stored locally in your browser and always here when you return.</p>
+
+        <!-- Empty favourites state -->
+        <div class="empty-state empty-state--favs" id="js-favs-empty" aria-live="polite">
+          <p class="empty-state__text">Press ♡ on any movie card to save it here.</p>
+        </div>
+
+        <!-- Favourites Grid -->
+        <ol
+          class="movie-grid movie-grid--favs"
+          id="js-favs-grid"
+          aria-label="Saved favourite movies"
+          aria-live="polite"
+          role="list"
+        >
+          <!-- JS injects fav cards here from LocalStorage -->
+        </ol>
+
+        <!-- Clear all favourites -->
+        <div class="favs-actions" id="js-favs-actions" hidden>
+          <button
+            class="btn btn--danger"
+            type="button"
+            id="js-clear-favs-btn"
+            aria-label="Clear all saved favourites"
+          >
+            Clear All Favourites
+          </button>
+        </div>
+
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!--Footer-->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Brand col -->
+        <div class="footer__col footer__col--brand">
+          <p class="footer__brand-name">🎬 CineSearch</p>
+          <p class="footer__brand-desc">A movie discovery app built with vanilla JavaScript and the OMDB API.</p>
+        </div>
+
+        <!-- Links col -->
+        <nav class="footer__col footer__col--links" aria-label="Footer navigation">
+          <h3 class="footer__col-heading">Quick Links</h3>
+          <ul class="footer__links" role="list">
+            <li><a class="footer__link" href="index.html">Discover</a></li>
+            <li><a class="footer__link" href="favourites.html">Favourites</a></li>
+            <li><a class="footer__link" href="about.html">About</a></li>
+          </ul>
+        </nav>
+
+        <!-- Tech col -->
+        <div class="footer__col footer__col--tech">
+          <h3 class="footer__col-heading">Built With</h3>
+          <ul class="footer__tech-list" role="list">
+            <li>Vanilla JavaScript</li>
+            <li>OMDB API</li>
+            <li>HTML5 &amp; CSS3</li>
+            <li>LocalStorage</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__credit">
+          Built by <a class="footer__link" href="https://github.com/fury85" target="_blank" rel="noopener noreferrer" aria-label="Fury's GitHub profile (opens in new tab)">Muhammad Farhan</a>
+          &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank" rel="noopener noreferrer" aria-label="OMDB API website (opens in new tab)">OMDB API</a>
+        </p>
+        <p class="footer__copy">
+          <small>&copy; <time id="js-year">2026</time> CineSearch. All rights reserved.</small>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Deferred for performance — DOM fully parsed before execution -->
+  <script src="js/config.js" defer></script>
+  <script src="js/shared.js" defer></script>
+  <script src="js/app.js" defer></script>
+
+</body>
+</html>
