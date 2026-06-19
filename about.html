@@ -2,22 +2,58 @@
 <html lang="en">
 
 <head>
+  <!-- ===================== META & SEO ===================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta Tags -->
   <title>About — CineSearch</title>
-  <meta name="description" content="About CineSearch — a vanilla JavaScript movie discovery app powered by the OMDB API." />
-  <link rel="canonical" href="https://cinesearch.netlify.app/about.html" />
+  <meta name="keywords" content="movie search app, javascript project, OMDB API, frontend developer, CineSearch" />
+  <meta name="author" content="Muhammad Farhan" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cinesearch.netlify.app/about.html" />
+  <meta property="og:title" content="About — CineSearch" />
+  <meta property="og:description"
+    content="About CineSearch — a vanilla JavaScript movie discovery app powered by the OMDB API." />
+  <meta property="og:image" content="assets/og-image.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — CineSearch" />
+  <meta name="twitter:description"
+    content="About CineSearch — a vanilla JavaScript movie discovery app powered by the OMDB API." />
+  <meta name="twitter:image" content="assets/og-image.svg" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cine-search-movies-earcher.vercel.app/about.html" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://www.omdbapi.com" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
+  <!--Skip link-->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
+  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header__brand">
@@ -28,6 +64,7 @@
         <p class="brand-tagline">Discover films you'll love</p>
       </div>
 
+      <!-- Main Navigation -->
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <ul class="nav__list" role="list">
           <li class="nav__item"><a class="nav__link" href="index.html">Discover</a></li>
@@ -37,11 +74,14 @@
               <span class="nav__badge" id="js-fav-count" aria-label="0 saved favourites">0</span>
             </a>
           </li>
-          <li class="nav__item"><a class="nav__link nav__link--active" href="about.html" aria-current="page">About</a></li>
+          <li class="nav__item"><a class="nav__link nav__link--active" href="about.html" aria-current="page">About</a>
+          </li>
         </ul>
       </nav>
 
-      <button class="nav-toggle" id="js-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation menu">
+      <!-- Mobile menu toggle -->
+      <button class="nav-toggle" id="js-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
+        aria-label="Toggle navigation menu">
         <span class="nav-toggle__bar" aria-hidden="true"></span>
         <span class="nav-toggle__bar" aria-hidden="true"></span>
         <span class="nav-toggle__bar" aria-hidden="true"></span>
@@ -49,22 +89,27 @@
     </div>
   </header>
 
+  <!--Main-->
   <main id="main-content" class="site-main" role="main">
     <div class="container">
 
+      <!-- Hero Section -->
       <section class="section section--hero" aria-labelledby="about-heading">
         <h1 class="hero__heading" id="about-heading">
           About <em class="hero__heading--accent">CineSearch</em>
         </h1>
         <p class="hero__subtext">
-          A fast, accessible movie discovery app — search titles, explore by theme, read full plots, and save favourites in your browser.
+          A fast, accessible movie discovery app — search titles, explore by theme, read full plots, and save favourites
+          in your browser.
         </p>
       </section>
 
+      <!-- Features Section -->
       <section class="section" aria-labelledby="features-heading">
         <h2 class="section__heading" id="features-heading">Features</h2>
         <ul class="footer__tech-list about-list" role="list">
-          <li>Search movies via the <a class="footer__link" href="https://www.omdbapi.com/" target="_blank" rel="noopener noreferrer">OMDB API</a></li>
+          <li>Search movies via the <a class="footer__link" href="https://www.omdbapi.com/" target="_blank"
+              rel="noopener noreferrer">OMDB API</a></li>
           <li>Genre chips combine with your search (e.g. “nolan” + Sci-Fi)</li>
           <li>Detail panel with plot, runtime, genres, and IMDb link</li>
           <li>Favourites saved in <code>localStorage</code> — no account required</li>
@@ -72,9 +117,11 @@
         </ul>
       </section>
 
+      <!-- Tech Stack Section -->
       <section class="section" aria-labelledby="stack-heading">
         <h2 class="section__heading" id="stack-heading">Tech stack</h2>
-        <p class="section__subtext">Vanilla HTML, CSS (design tokens + component modules), and JavaScript — no frameworks, no build step required.</p>
+        <p class="section__subtext">Vanilla HTML, CSS (design tokens + component modules), and JavaScript — no
+          frameworks, no build step required.</p>
         <p class="section__subtext">
           <a class="btn btn--primary" href="index.html">Start discovering</a>
         </p>
@@ -83,12 +130,15 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer__bottom">
         <p class="footer__credit">
-          Built by <a class="footer__link" href="https://github.com/fury85" target="_blank" rel="noopener noreferrer">Fury</a>
-          &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank" rel="noopener noreferrer">OMDB API</a>
+          Built by <a class="footer__link" href="https://github.com/fury85" target="_blank"
+            rel="noopener noreferrer">Muhammmad Farhan</a>
+          &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank"
+            rel="noopener noreferrer">OMDB API</a>
         </p>
         <p class="footer__copy">
           <small>&copy; <time id="js-year">2026</time> CineSearch.</small>
@@ -112,4 +162,5 @@
   </script>
 
 </body>
+
 </html>

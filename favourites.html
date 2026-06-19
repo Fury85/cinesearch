@@ -2,28 +2,64 @@
 <html lang="en">
 
 <head>
+    <!-- ================META & SEO ================-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
     <title>Favourites — CineSearch</title>
+    <meta name="author" content="Muhammad Farhan" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Favourites — CineSearch" />
     <meta name="description" content="Your saved favourite movies on CineSearch." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cine-search-movies-earcher.vercel.app/favourites.html" />
+    <meta property="og:title" content="Favourites — CineSearch" />
+    <meta property="og:description"
+        content="Favourites CineSearch — a vanilla JavaScript movie discovery app powered by the OMDB API." />
+    <meta property="og:image" content="assets/og-image.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Favourites — CineSearch" />
+    <meta name="twitter:description"
+        content="Favourites CineSearch — a vanilla JavaScript movie discovery app powered by the OMDB API." />
+    <meta name="twitter:image" content="assets/og-image.svg" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://cinesearch.netlify.app/favourites.html" />
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.omdbapi.com" />
+
+    <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
         rel="stylesheet" />
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
+    <!-- Skip link -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- ===== HEADER ===== -->
+    <!-- Header -->
     <header class="site-header" role="banner">
         <div class="container">
 
+            <!-- Logo -->
             <div class="header__brand">
                 <a href="index.html" class="brand-link" aria-label="CineSearch homepage">
                     <span class="brand-icon" aria-hidden="true">🎬</span>
@@ -32,6 +68,7 @@
                 <p class="brand-tagline">Discover films you'll love</p>
             </div>
 
+            <!-- Main Navigation -->
             <nav class="site-nav" id="site-nav" aria-label="Main navigation">
                 <ul class="nav__list" role="list">
                     <li class="nav__item">
@@ -49,6 +86,7 @@
                 </ul>
             </nav>
 
+            <!-- Mobile menu toggle -->
             <button class="nav-toggle" id="js-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
                 aria-label="Toggle navigation menu">
                 <span class="nav-toggle__bar" aria-hidden="true"></span>
@@ -59,7 +97,7 @@
         </div>
     </header>
 
-    <!-- ===== MAIN ===== -->
+    <!-- Main -->
     <main id="main-content" class="site-main" role="main">
         <div class="container">
 
@@ -143,7 +181,7 @@
         </div>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- Footer -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer__grid">
