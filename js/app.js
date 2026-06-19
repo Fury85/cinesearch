@@ -330,7 +330,7 @@
   }
 
   /* ----- Events ----- */
-  
+
   function initEvents() {
     DOM.searchForm.addEventListener('submit', (e) => {
       e.preventDefault();

@@ -10,7 +10,8 @@
   <!-- Primary Meta Tags -->
   <title>CineSearch — Discover & Save Your Favourite Movies</title>
   <meta name="title" content="CineSearch — Discover & Save Your Favourite Movies" />
-  <meta name="description" content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites — all in one place." />
+  <meta name="description"
+    content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites — all in one place." />
   <meta name="keywords" content="movie search, film discovery, movie ratings, favourites, genre filter, cinema" />
   <meta name="author" content="Fury" />
   <meta name="robots" content="index, follow" />
@@ -19,13 +20,15 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cinesearch.netlify.app/" />
   <meta property="og:title" content="CineSearch — Discover & Save Your Favourite Movies" />
-  <meta property="og:description" content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites." />
+  <meta property="og:description"
+    content="Search thousands of movies, filter by genre, view ratings and plot details, and save your favourites." />
   <meta property="og:image" content="assets/og-image.svg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CineSearch — Discover & Save Your Favourite Movies" />
-  <meta name="twitter:description" content="Search thousands of movies, filter by genre, view ratings and save your favourites." />
+  <meta name="twitter:description"
+    content="Search thousands of movies, filter by genre, view ratings and save your favourites." />
   <meta name="twitter:image" content="assets/og-image.svg" />
 
   <!-- Canonical -->
@@ -40,7 +43,9 @@
   <link rel="preconnect" href="https://www.omdbapi.com" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+    rel="stylesheet" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
@@ -96,14 +101,8 @@
       </nav>
 
       <!-- Mobile menu toggle -->
-      <button
-        class="nav-toggle"
-        id="js-nav-toggle"
-        type="button"
-        aria-controls="site-nav"
-        aria-expanded="false"
-        aria-label="Toggle navigation menu"
-      >
+      <button class="nav-toggle" id="js-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
+        aria-label="Toggle navigation menu">
         <span class="nav-toggle__bar" aria-hidden="true"></span>
         <span class="nav-toggle__bar" aria-hidden="true"></span>
         <span class="nav-toggle__bar" aria-hidden="true"></span>
@@ -117,7 +116,8 @@
     <div class="container">
 
       <div class="config-banner" id="js-config-banner" role="alert" hidden>
-        Add your OMDB API key in <a href="https://www.omdbapi.com/apikey.aspx" target="_blank" rel="noopener noreferrer">js/config.js</a> (copy from <code>js/config.example.js</code>) to enable search.
+        Add your OMDB API key in <a href="https://www.omdbapi.com/apikey.aspx" target="_blank"
+          rel="noopener noreferrer">js/config.js</a> (copy from <code>js/config.example.js</code>) to enable search.
       </div>
 
       <!-- Hero and search section -->
@@ -126,50 +126,29 @@
           Find Your Next<br />
           <em class="hero__heading--accent">Favourite Film</em>
         </h1>
-        <p class="hero__subtext">Search from thousands of titles — get ratings, plot details, and save the ones you love.</p>
+        <p class="hero__subtext">Search from thousands of titles — get ratings, plot details, and save the ones you
+          love.</p>
 
         <!-- Search Form -->
-        <form
-          class="search-form"
-          id="js-search-form"
-          role="search"
-          action="#"
-          method="get"
-          aria-label="Movie search form"
-          novalidate
-        >
+        <form class="search-form" id="js-search-form" role="search" action="#" method="get"
+          aria-label="Movie search form" novalidate>
           <label class="search-form__label" for="js-search-input">Search movies</label>
 
           <div class="search-form__group">
             <span class="search-form__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
               </svg>
             </span>
 
-            <input
-              class="search-form__input"
-              type="search"
-              id="js-search-input"
-              name="q"
-              placeholder="e.g. Inception, Christopher Nolan..."
-              autocomplete="off"
-              autocorrect="off"
-              spellcheck="false"
-              maxlength="100"
-              aria-label="Search for a movie"
-              aria-describedby="search-hint"
-              aria-autocomplete="list"
-              aria-controls="js-results-grid"
-              required
-            />
+            <input class="search-form__input" type="search" id="js-search-input" name="q"
+              placeholder="e.g. Inception, Christopher Nolan..." autocomplete="off" autocorrect="off" spellcheck="false"
+              maxlength="100" aria-label="Search for a movie" aria-describedby="search-hint" aria-autocomplete="list"
+              aria-controls="js-results-grid" required />
 
-            <button
-              class="search-form__btn"
-              type="submit"
-              id="js-search-btn"
-              aria-label="Submit search"
-            >
+            <button class="search-form__btn" type="submit" id="js-search-btn" aria-label="Submit search">
               Search
             </button>
           </div>
@@ -186,21 +165,16 @@
 
         <div class="filters" role="group" aria-label="Refine search by genre keyword">
 
-          <button
-            class="filter-btn filter-btn--active"
-            type="button"
-            data-genre="all"
-            aria-pressed="true"
-            aria-label="Show all genres"
-          >All</button>
+          <button class="filter-btn filter-btn--active" type="button" data-genre="all" aria-pressed="true"
+            aria-label="Show all genres">All</button>
 
-          <button class="filter-btn" type="button" data-genre="action"   aria-pressed="false">Action</button>
-          <button class="filter-btn" type="button" data-genre="drama"    aria-pressed="false">Drama</button>
-          <button class="filter-btn" type="button" data-genre="sci-fi"   aria-pressed="false">Sci-Fi</button>
-          <button class="filter-btn" type="button" data-genre="comedy"   aria-pressed="false">Comedy</button>
-          <button class="filter-btn" type="button" data-genre="horror"   aria-pressed="false">Horror</button>
+          <button class="filter-btn" type="button" data-genre="action" aria-pressed="false">Action</button>
+          <button class="filter-btn" type="button" data-genre="drama" aria-pressed="false">Drama</button>
+          <button class="filter-btn" type="button" data-genre="sci-fi" aria-pressed="false">Sci-Fi</button>
+          <button class="filter-btn" type="button" data-genre="comedy" aria-pressed="false">Comedy</button>
+          <button class="filter-btn" type="button" data-genre="horror" aria-pressed="false">Horror</button>
           <button class="filter-btn" type="button" data-genre="thriller" aria-pressed="false">Thriller</button>
-          <button class="filter-btn" type="button" data-genre="romance"  aria-pressed="false">Romance</button>
+          <button class="filter-btn" type="button" data-genre="romance" aria-pressed="false">Romance</button>
           <button class="filter-btn" type="button" data-genre="animation" aria-pressed="false">Animation</button>
 
         </div>
@@ -210,30 +184,16 @@
       </section>
 
       <!------ Selected movie panel ------>
-      <section
-        class="section section--detail"
-        id="js-detail-panel"
-        aria-labelledby="detail-heading"
-        aria-live="polite"
-        hidden
-      >
+      <section class="section section--detail" id="js-detail-panel" aria-labelledby="detail-heading" aria-live="polite"
+        hidden>
         <h2 class="sr-only" id="detail-heading">Selected movie details</h2>
 
         <article class="detail-card" id="js-detail-card" itemscope itemtype="https://schema.org/Movie">
 
           <!-- Poster -->
           <figure class="detail-card__poster-wrap">
-            <img
-              class="detail-card__poster"
-              id="js-detail-poster"
-              src=""
-              alt=""
-              width="120"
-              height="180"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-              itemprop="image"
-            />
+            <img class="detail-card__poster" id="js-detail-poster" src="" alt="" width="120" height="180" loading="lazy"
+              referrerpolicy="no-referrer" itemprop="image" />
           </figure>
 
           <!-- Info -->
@@ -269,25 +229,13 @@
 
             <!-- Actions -->
             <div class="detail-card__actions">
-              <button
-                class="btn btn--primary"
-                type="button"
-                id="js-detail-fav-btn"
-                data-imdb-id=""
-                aria-label="Save to favourites"
-                aria-pressed="false"
-              >
+              <button class="btn btn--primary" type="button" id="js-detail-fav-btn" data-imdb-id=""
+                aria-label="Save to favourites" aria-pressed="false">
                 <span aria-hidden="true">♡</span> Save to Favourites
               </button>
 
-              <a
-                class="btn btn--secondary"
-                id="js-detail-imdb-link"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View on IMDb (opens in new tab)"
-              >
+              <a class="btn btn--secondary" id="js-detail-imdb-link" href="#" target="_blank" rel="noopener noreferrer"
+                aria-label="View on IMDb (opens in new tab)">
                 View on IMDb ↗
               </a>
             </div>
@@ -336,14 +284,8 @@
         </div>
 
         <!-- Movie Grid -->
-        <ol
-          class="movie-grid"
-          id="js-results-grid"
-          aria-label="Movie search results"
-          aria-live="polite"
-          aria-atomic="false"
-          role="list"
-        >
+        <ol class="movie-grid" id="js-results-grid" aria-label="Movie search results" aria-live="polite"
+          aria-atomic="false" role="list">
         </ol>
 
         <!-- Pagination -->
@@ -365,7 +307,8 @@
           Saved Favourites
           <span class="section__heading-badge" id="js-fav-count-2" aria-label="0 favourites">0</span>
         </h2>
-        <p class="section__subtext">Your saved movies — stored locally in your browser and always here when you return.</p>
+        <p class="section__subtext">Your saved movies — stored locally in your browser and always here when you return.
+        </p>
 
         <!-- Empty favourites state -->
         <div class="empty-state empty-state--favs" id="js-favs-empty" aria-live="polite">
@@ -373,24 +316,14 @@
         </div>
 
         <!-- Favourites Grid -->
-        <ol
-          class="movie-grid movie-grid--favs"
-          id="js-favs-grid"
-          aria-label="Saved favourite movies"
-          aria-live="polite"
-          role="list"
-        >
+        <ol class="movie-grid movie-grid--favs" id="js-favs-grid" aria-label="Saved favourite movies" aria-live="polite"
+          role="list">
           <!-- JS injects fav cards here from LocalStorage -->
         </ol>
 
         <!-- Clear all favourites -->
         <div class="favs-actions" id="js-favs-actions" hidden>
-          <button
-            class="btn btn--danger"
-            type="button"
-            id="js-clear-favs-btn"
-            aria-label="Clear all saved favourites"
-          >
+          <button class="btn btn--danger" type="button" id="js-clear-favs-btn" aria-label="Clear all saved favourites">
             Clear All Favourites
           </button>
         </div>
@@ -437,8 +370,10 @@
 
       <div class="footer__bottom">
         <p class="footer__credit">
-          Built by <a class="footer__link" href="https://github.com/fury85" target="_blank" rel="noopener noreferrer" aria-label="Fury's GitHub profile (opens in new tab)">Muhammad Farhan</a>
-          &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank" rel="noopener noreferrer" aria-label="OMDB API website (opens in new tab)">OMDB API</a>
+          Built by <a class="footer__link" href="https://github.com/fury85" target="_blank" rel="noopener noreferrer"
+            aria-label="Fury's GitHub profile (opens in new tab)">Muhammad Farhan</a>
+          &mdash; Data from <a class="footer__link" href="https://www.omdbapi.com/" target="_blank"
+            rel="noopener noreferrer" aria-label="OMDB API website (opens in new tab)">OMDB API</a>
         </p>
         <p class="footer__copy">
           <small>&copy; <time id="js-year">2026</time> CineSearch. All rights reserved.</small>
@@ -454,4 +389,5 @@
   <script src="js/app.js" defer></script>
 
 </body>
+
 </html>

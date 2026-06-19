@@ -112,7 +112,7 @@
   }
 
   /* ----- UI helpers ----- */
-  
+
   const NO_POSTER = 'assets/no-poster.svg';
 
   function posterSrc(movie) {
